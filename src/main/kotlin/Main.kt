@@ -18,9 +18,10 @@ fun main() {
     val json = response.body()
     println(json)
 
-    val meuJogo = Jogo()
-    meuJogo.titulo = "Lego"
-    meuJogo.capa = "Capa"
+    val meuJogo = Jogo(
+        "Lego",
+        "Capa"
+    )
 
     print(meuJogo.toString())
 }
