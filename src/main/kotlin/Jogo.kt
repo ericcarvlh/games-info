@@ -1,7 +1,12 @@
+import com.google.gson.annotations.SerializedName
+
 // Val -> somente leitura, recebem valore apenas uma vez
 // Var -> !val
 
-class Jogo(val titulo:String, val capa: String) {
+class Jogo(
+    @SerializedName("title") val titulo:String,
+    @SerializedName("thumb") val capa: String
+) {
     var descricao = ""
 
     override fun toString(): String {
