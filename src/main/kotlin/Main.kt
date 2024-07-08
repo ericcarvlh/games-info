@@ -20,7 +20,12 @@ fun main() {
     println(json)
 
     val gson = Gson()
-    val meuJogo = gson.fromJson(json, InfoJogo::class.java)
+    val infoAPIShark = gson.fromJson(json, InfoAPIShark::class.java)
+
+    val meuJogo = Jogo(
+        infoAPIShark.info.title,
+        infoAPIShark.info.thumb
+    )
 
     print(meuJogo)
 }
