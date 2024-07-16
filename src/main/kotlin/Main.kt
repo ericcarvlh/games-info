@@ -28,18 +28,33 @@ fun main() {
 
     val json = response.body()
 
-    try {
+    var meuJogo:Jogo? = null
+    val resultado = runCatching {
         val gson = Gson()
         val infoAPIShark = gson.fromJson(json, InfoAPIShark::class.java)
 
-        val meuJogo = Jogo(
+        meuJogo = Jogo(
             infoAPIShark.info.title,
             infoAPIShark.info.thumb
         )
+    }
+
+    resultado.onFailure {
+        println("Erro ao instanciar o jogo.")
+    }
+
+    resultado.onSuccess {
+        println("Deseja inserir uma descrição personalizada? S/N")
+        val opcao = sc.nextLine()
+        if (opcao.equals("S", true)) {
+            println("Insira a descrição personalizada: ")
+            val descricaoPersonalizada = sc.nextLine()
+            meuJogo?.descricao = descricaoPersonalizada
+        } else {
+            println("")
+            meuJogo?.descricao = meuJogo?.titulo
+        }
 
         print(meuJogo)
-    }
-    catch (ex: JsonSyntaxException) {
-        println("Erro ao lidar com o json! Id: $codigoJogo\nExceção gerada: ${ex.message}.")
     }
 }
