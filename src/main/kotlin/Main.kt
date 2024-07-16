@@ -40,7 +40,7 @@ fun main() {
     }
 
     resultado.onFailure {
-        println("Erro ao instanciar o jogo.")
+        println("Erro ao instanciar o jogo. Erro: ${resultado.exceptionOrNull()?.message}")
     }
 
     resultado.onSuccess {
@@ -51,7 +51,6 @@ fun main() {
             val descricaoPersonalizada = sc.nextLine()
             meuJogo?.descricao = descricaoPersonalizada
         } else {
-            println("")
             meuJogo?.descricao = meuJogo?.titulo
         }
 
