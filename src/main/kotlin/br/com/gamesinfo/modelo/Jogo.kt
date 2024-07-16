@@ -1,4 +1,4 @@
-// Val -> somente leitura, recebem valore apenas uma vez
+package br.com.gamesinfo.modelo// Val -> somente leitura, recebem valore apenas uma vez
 // Var -> !val
 
 data class Jogo(
