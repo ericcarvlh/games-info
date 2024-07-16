@@ -1,4 +1,6 @@
 import com.google.gson.Gson
+import com.google.gson.JsonSyntaxException
+import java.lang.NullPointerException
 import java.net.URI
 import java.net.http.HttpClient
 import java.net.http.HttpRequest
@@ -25,15 +27,19 @@ fun main() {
     )
 
     val json = response.body()
-    println(json)
 
-    val gson = Gson()
-    val infoAPIShark = gson.fromJson(json, InfoAPIShark::class.java)
+    try {
+        val gson = Gson()
+        val infoAPIShark = gson.fromJson(json, InfoAPIShark::class.java)
 
-    val meuJogo = Jogo(
-        infoAPIShark.info.title,
-        infoAPIShark.info.thumb
-    )
+        val meuJogo = Jogo(
+            infoAPIShark.info.title,
+            infoAPIShark.info.thumb
+        )
 
-    print(meuJogo)
+        print(meuJogo)
+    }
+    catch (ex: JsonSyntaxException) {
+        println("Erro ao lidar com o json! Id: $codigoJogo\nExceção gerada: ${ex.message}.")
+    }
 }
