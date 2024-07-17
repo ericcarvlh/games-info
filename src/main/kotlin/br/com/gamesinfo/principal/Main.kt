@@ -56,6 +56,33 @@ fun main() {
 
     } while (resposta.equals("S", true))
 
-    println("Jogos buscados:\n${gamer.jogosBuscados}")
+    gamer.jogosBuscados.sortBy{
+        it?.titulo
+    } // ordenando pelo titulo
+    gamer.jogosBuscados.forEach{
+        println("Titulo: ${it?.titulo}")
+    } // exibindo somente o titulo
+    println("")
+    val jogosFiltrados = gamer.jogosBuscados.filter {
+        it?.titulo?.contains(
+            "Batman",
+            true
+        ) ?: false // se nao for enocntrado nada, recebemos a lista sem filtro
+    }
+    println("Jogos: $jogosFiltrados")
+
+    println("Deseja excluir algum jogo da lista original? S/N")
+    val opcao = sc.nextLine()
+
+    if (opcao.equals("S", true)) {
+        println("\nLista original: ${gamer.jogosBuscados}\n")
+
+        println("Qual a posicação do jogo que você deseja remover?")
+        val posicao = sc.nextInt()
+        gamer.jogosBuscados.removeAt(posicao)
+
+        println("\nLista após a remoção: ${gamer.jogosBuscados}")
+    }
+
     println("Busca finalizada com sucesso")
 }
