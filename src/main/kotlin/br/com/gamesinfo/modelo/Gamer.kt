@@ -1,5 +1,6 @@
 package br.com.gamesinfo.modelo
 
+import java.util.Scanner
 import kotlin.random.Random
 import kotlin.random.nextInt
 
@@ -16,6 +17,7 @@ data class Gamer(
         }
     var idInterno:String? = null
         private set
+    var jogosBuscados:MutableList<Jogo?> = mutableListOf<Jogo?>()
 
     constructor(
         nome: String,
@@ -58,5 +60,30 @@ data class Gamer(
             throw IllegalArgumentException("Nome em branco!")
         else
             return nome
+    }
+
+    companion object {
+        fun criarGamer(leitura: Scanner): Gamer {
+            println("Boas vindas ao Games Info! Vamos fazer seu cadastro.")
+            println("")
+            println("Digite seu nome:")
+            val nome = leitura.nextLine()
+            println("Digite seu e-mail:")
+            val email = leitura.nextLine()
+
+            println("Deseja completar seu cadastro com usuário e data de nascimento? (S/N)")
+            val opcao = leitura.nextLine()
+
+            if (opcao.equals("S", true)) {
+                println("Digite sua data de nascimento(DD/MM/AAAA):")
+                val nascimento = leitura.nextLine()
+                println("Digite seu nome de usuário:")
+                val usuario = leitura.nextLine()
+
+                return Gamer(nome, email, nascimento, usuario)
+            }
+
+            return Gamer(nome, email)
+        }
     }
 }
