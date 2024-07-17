@@ -5,6 +5,7 @@ import br.com.gamesinfo.modelo.InfoAPIShark
 import br.com.gamesinfo.modelo.Jogo
 import br.com.gamesinfo.servicos.ConsumoAPI
 import com.google.gson.Gson
+import transformarEmIdade
 import java.util.*
 
 fun main() {
@@ -12,6 +13,7 @@ fun main() {
     val gamer = Gamer.criarGamer(sc)
 
     gamer.also {
+        println("Idade do gamer: ${gamer.dataNascimento?.transformarEmIdade() ?: "Idade não informada."}")
         println("\n**Cadastro realizado com sucesso!**\n")
     }
 
