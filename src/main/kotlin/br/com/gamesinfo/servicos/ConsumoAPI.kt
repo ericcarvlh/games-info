@@ -13,7 +13,7 @@ import java.net.http.HttpResponse
 
 class ConsumoAPI {
 
-    private fun consumoBase(url: String): String? {
+    private fun consumoBase(url: String): String {
         val client: HttpClient = HttpClient.newHttpClient()
         val request = HttpRequest.newBuilder(
         ).uri(
@@ -27,7 +27,7 @@ class ConsumoAPI {
         return response.body()
     }
 
-    fun buscaJogo(id: String): String? {
+    fun buscaJogo(id: String): String {
         val url = "https://www.cheapshark.com/api/1.0/games?id=$id"
 
         return consumoBase(url)
