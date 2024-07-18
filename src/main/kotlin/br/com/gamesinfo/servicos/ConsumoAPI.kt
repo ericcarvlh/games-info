@@ -1,5 +1,8 @@
 package br.com.gamesinfo.servicos
 
+import br.com.gamesinfo.modelo.InfoGamerJson
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import java.net.URI
 import java.net.http.HttpClient
 import java.net.http.HttpRequest
@@ -21,5 +24,28 @@ class ConsumoAPI {
         )
 
         return response.body()
+    }
+
+    fun buscaGamers(): List<InfoGamerJson> {
+        val url = "https://raw.githubusercontent.com/jeniblodev/arquivosJson/main/gamers.json"
+
+        val client: HttpClient = HttpClient.newHttpClient()
+        val request = HttpRequest.newBuilder(
+        ).uri(
+            URI.create(url)
+        ).build()
+
+        val response = client.send(
+            request, HttpResponse.BodyHandlers.ofString()
+        )
+
+        val json = response.body()
+
+        val gson = Gson()
+        // aqui dizemos o tipo de dado que queremos retornar
+        // de uma conversao
+        val meuGamerTipo = object : TypeToken<List<InfoGamerJson>>() {}.type
+
+        return gson.fromJson(json, meuGamerTipo)
     }
 }
