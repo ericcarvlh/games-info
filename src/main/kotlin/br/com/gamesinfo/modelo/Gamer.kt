@@ -1,5 +1,6 @@
 package br.com.gamesinfo.modelo
 
+import java.time.LocalDate
 import java.util.Scanner
 import kotlin.random.Random
 import kotlin.random.nextInt
@@ -62,8 +63,8 @@ data class Gamer(
             return nome
     }
 
-    fun alugaJogo(jogoJson: InfoJogoJson): Aluguel {
-        return Aluguel(this, jogoJson)
+    fun alugaJogo(jogoJson: InfoJogoJson, dataInicial: LocalDate, dataFinal: LocalDate): Aluguel {
+        return Aluguel(this, jogoJson, dataInicial, dataFinal)
     }
 
     // equivalente a static no kotlin

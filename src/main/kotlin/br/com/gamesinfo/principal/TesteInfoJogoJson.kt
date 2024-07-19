@@ -1,6 +1,7 @@
 package br.com.gamesinfo.principal
 
 import br.com.gamesinfo.servicos.ConsumoAPI
+import java.time.LocalDate
 
 fun main() {
     val consumo = ConsumoAPI()
@@ -13,7 +14,7 @@ fun main() {
     println(gamerBruno)
     println(jogoRd2)
 
-    val aluguel = gamerBruno.alugaJogo(jogoRd2)
+    val aluguel = gamerBruno.alugaJogo(jogoRd2, LocalDate.now(), LocalDate.now().plusDays(5))
 
     println(aluguel)
 }
