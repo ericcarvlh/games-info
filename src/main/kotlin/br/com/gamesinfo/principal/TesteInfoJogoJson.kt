@@ -1,5 +1,6 @@
 package br.com.gamesinfo.principal
 
+import br.com.gamesinfo.modelo.Periodo
 import br.com.gamesinfo.servicos.ConsumoAPI
 import java.time.LocalDate
 
@@ -14,7 +15,8 @@ fun main() {
     println(gamerBruno)
     println(jogoRd2)
 
-    val aluguel = gamerBruno.alugaJogo(jogoRd2, LocalDate.now(), LocalDate.now().plusDays(5))
+    val periodo = Periodo(LocalDate.now(), LocalDate.now().plusDays(5))
+    val aluguel = gamerBruno.alugaJogo(jogoRd2, periodo)
 
     println(aluguel)
 }

@@ -63,8 +63,8 @@ data class Gamer(
             return nome
     }
 
-    fun alugaJogo(jogoJson: InfoJogoJson, dataInicial: LocalDate, dataFinal: LocalDate): Aluguel {
-        return Aluguel(this, jogoJson, dataInicial, dataFinal)
+    fun alugaJogo(jogoJson: InfoJogoJson, periodo: Periodo): Aluguel {
+        return Aluguel(this, jogoJson,periodo)
     }
 
     // equivalente a static no kotlin

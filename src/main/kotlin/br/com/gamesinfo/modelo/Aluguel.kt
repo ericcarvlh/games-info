@@ -6,10 +6,9 @@ import java.time.Period
 data class Aluguel(
     val gamer: Gamer,
     val jogoJson: InfoJogoJson,
-    val dataInicial: LocalDate,
-    val dataFinal: LocalDate
+    val periodo: Periodo
 ) {
-    val vlrAluguel = jogoJson.preco * Period.between(dataInicial, dataFinal).days
+    val vlrAluguel = jogoJson.preco * periodo.emDias
 
     override fun toString(): String {
         return "Aluguel do jogo ${jogoJson.titulo} por ${gamer.nome} por um valor de $vlrAluguel"
