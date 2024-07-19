@@ -62,6 +62,11 @@ data class Gamer(
             return nome
     }
 
+    fun alugaJogo(jogoJson: InfoJogoJson): Aluguel {
+        return Aluguel(this, jogoJson)
+    }
+
+    // equivalente a static no kotlin
     companion object {
         fun criarGamer(leitura: Scanner): Gamer {
             println("Boas vindas ao Games Info! Vamos fazer seu cadastro.")
