@@ -19,6 +19,7 @@ data class Gamer(
     var idInterno:String? = null
         private set
     var jogosBuscados:MutableList<Jogo?> = mutableListOf<Jogo?>()
+    var jogosAlugados = mutableListOf<Aluguel>()
 
     constructor(
         nome: String,
@@ -64,7 +65,10 @@ data class Gamer(
     }
 
     fun alugaJogo(jogoJson: InfoJogoJson, periodo: Periodo): Aluguel {
-        return Aluguel(this, jogoJson,periodo)
+        val aluguel =  Aluguel(this, jogoJson,periodo)
+        jogosAlugados.add(aluguel)
+
+        return aluguel
     }
 
     // equivalente a static no kotlin

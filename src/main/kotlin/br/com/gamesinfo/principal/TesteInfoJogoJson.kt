@@ -3,6 +3,7 @@ package br.com.gamesinfo.principal
 import br.com.gamesinfo.modelo.Periodo
 import br.com.gamesinfo.servicos.ConsumoAPI
 import java.time.LocalDate
+import kotlin.math.round
 
 fun main() {
     val consumo = ConsumoAPI()
@@ -11,12 +12,21 @@ fun main() {
 
     val gamerBruno = gamers[4]
     val jogoRd2 = jogos[3]
-
-    println(gamerBruno)
-    println(jogoRd2)
+    val jogoResidentVillage = jogos[10]
+    val jogoSpider = jogos[13]
+    val jogoTheLastOfUs2 = jogos[13]
 
     val periodo = Periodo(LocalDate.now(), LocalDate.now().plusDays(5))
-    val aluguel = gamerBruno.alugaJogo(jogoRd2, periodo)
+    gamerBruno.alugaJogo(jogoRd2, periodo)
+    gamerBruno.alugaJogo(jogoResidentVillage, periodo)
+    gamerBruno.alugaJogo(jogoSpider, periodo)
+    gamerBruno.alugaJogo(jogoTheLastOfUs2, periodo)
 
-    println(aluguel)
+    println(gamerBruno.jogosAlugados)
+
+    var vlrTotalAluguel = 0.0
+    gamerBruno.jogosAlugados.forEach{
+        vlrTotalAluguel += it.vlrAluguel
+    }
+    println("Valor total do aluguel: R$ ${round(vlrTotalAluguel)}")
 }
