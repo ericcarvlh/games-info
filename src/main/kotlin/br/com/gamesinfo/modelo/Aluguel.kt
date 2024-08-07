@@ -8,7 +8,7 @@ data class Aluguel(
     val jogoJson: InfoJogoJson,
     val periodo: Periodo
 ) {
-    val vlrAluguel = jogoJson.preco * periodo.emDias
+    val vlrAluguel = gamer.plano.obterValor(this)
 
     override fun toString(): String {
         return "Aluguel do jogo ${jogoJson.titulo} por ${gamer.nome} por um valor de R$ $vlrAluguel"

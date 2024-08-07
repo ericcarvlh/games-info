@@ -18,6 +18,7 @@ data class Gamer(
         }
     var idInterno:String? = null
         private set
+    var plano: PlanoAvulso = PlanoAvulso("BRONZE")
     var jogosBuscados:MutableList<Jogo?> = mutableListOf<Jogo?>()
     var jogosAlugados = mutableListOf<Aluguel>()
 
