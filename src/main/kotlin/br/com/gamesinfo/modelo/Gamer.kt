@@ -1,9 +1,7 @@
 package br.com.gamesinfo.modelo
 
-import java.time.LocalDate
 import java.util.Scanner
 import kotlin.random.Random
-import kotlin.random.nextInt
 
 data class Gamer(
     var nome: String,
@@ -18,7 +16,7 @@ data class Gamer(
         }
     var idInterno:String? = null
         private set
-    var plano: PlanoAvulso = PlanoAvulso("BRONZE")
+    var plano: Plano = PlanoAvulso("BRONZE")
     var jogosBuscados:MutableList<Jogo?> = mutableListOf<Jogo?>()
     var jogosAlugados = mutableListOf<Aluguel>()
 
@@ -66,10 +64,18 @@ data class Gamer(
     }
 
     fun alugaJogo(jogoJson: InfoJogoJson, periodo: Periodo): Aluguel {
-        val aluguel =  Aluguel(this, jogoJson,periodo)
+        val aluguel = Aluguel(this, jogoJson, periodo)
         jogosAlugados.add(aluguel)
 
         return aluguel
+    }
+
+    fun jogosDoMes(mesEmQuestao: Int): List<InfoJogoJson> {
+        return jogosAlugados.filter {
+            aluguel -> aluguel.periodo.dataInicial.monthValue == mesEmQuestao
+        }.map {
+            aluguel -> aluguel.jogoJson
+        }
     }
 
     // equivalente a static no kotlin
