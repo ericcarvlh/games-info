@@ -46,4 +46,8 @@ fun main() {
     }
     println("Valor total do aluguel: R$ ${round(vlrTotalAluguel)}")
 
+    gamerCamila.recomendar(7)
+    gamerCamila.recomendar(10)
+    gamerCamila.recomendar(8)
+    println(gamerCamila)
 }
