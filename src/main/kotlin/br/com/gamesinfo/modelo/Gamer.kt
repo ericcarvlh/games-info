@@ -1,5 +1,7 @@
 package br.com.gamesinfo.modelo
 
+import br.com.gamesinfo.modelo.plano.Plano
+import br.com.gamesinfo.modelo.plano.PlanoAvulso
 import java.util.Scanner
 import kotlin.random.Random
 

@@ -1,4 +1,6 @@
-package br.com.gamesinfo.modelo
+package br.com.gamesinfo.modelo.plano
+
+import br.com.gamesinfo.modelo.Aluguel
 
 class PlanoAssinatura(
     tipo: String,

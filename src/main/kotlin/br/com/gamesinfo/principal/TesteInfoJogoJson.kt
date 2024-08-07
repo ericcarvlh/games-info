@@ -1,7 +1,7 @@
 package br.com.gamesinfo.principal
 
 import br.com.gamesinfo.modelo.Periodo
-import br.com.gamesinfo.modelo.PlanoAssinatura
+import br.com.gamesinfo.modelo.plano.PlanoAssinatura
 import br.com.gamesinfo.servicos.ConsumoAPI
 import java.time.LocalDate
 import kotlin.math.round
@@ -39,4 +39,11 @@ fun main() {
     gamerCamila.alugaJogo(jogoResidentVillage, periodo)
     gamerCamila.alugaJogo(jogoTheLastOfUs2, periodo)
     println(gamerCamila.jogosAlugados)
+
+    vlrTotalAluguel = 0.0
+    gamerCamila.jogosAlugados.forEach{
+        vlrTotalAluguel += it.vlrAluguel
+    }
+    println("Valor total do aluguel: R$ ${round(vlrTotalAluguel)}")
+
 }
