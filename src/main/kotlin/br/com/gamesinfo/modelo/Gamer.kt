@@ -27,6 +27,12 @@ data class Gamer(
         get() = listaNotas.average()
 
     override fun recomendar(nota: Int) {
+        if (nota < 1 || nota > 10) {
+            val msgNotaInvalida = "A nota inserida é inválida!! Deve estar entre 1 e 10"
+            println(msgNotaInvalida)
+            throw Exception(msgNotaInvalida)
+        }
+
         listaNotas.add(nota)
     }
 

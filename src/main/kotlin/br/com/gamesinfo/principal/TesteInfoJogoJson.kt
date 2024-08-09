@@ -32,22 +32,23 @@ fun main() {
     println("Valor total do aluguel: R$ ${round(vlrTotalAluguel)}")
 
     val gamerCamila = gamers.get(5)
-    gamerCamila.plano = PlanoAssinatura("PRATA", 9.90, 3)
+    gamerCamila.plano = PlanoAssinatura("PRATA", 9.90, 3, 0.15)
+
+    gamerCamila.recomendar(7)
+    gamerCamila.recomendar(10)
+    gamerCamila.recomendar(8)
+    gamerCamila.recomendar(0)
 
     gamerCamila.alugaJogo(jogoRd2, periodo)
     gamerCamila.alugaJogo(jogoSpider, periodo)
     gamerCamila.alugaJogo(jogoResidentVillage, periodo)
     gamerCamila.alugaJogo(jogoTheLastOfUs2, periodo)
-    println(gamerCamila.jogosAlugados)
 
+    println(gamerCamila.jogosAlugados)
     vlrTotalAluguel = 0.0
     gamerCamila.jogosAlugados.forEach{
         vlrTotalAluguel += it.vlrAluguel
     }
     println("Valor total do aluguel: R$ ${round(vlrTotalAluguel)}")
-
-    gamerCamila.recomendar(7)
-    gamerCamila.recomendar(10)
-    gamerCamila.recomendar(8)
     println(gamerCamila)
 }
