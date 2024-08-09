@@ -1,8 +1,10 @@
 package br.com.gamesinfo.modelo
 
+import com.google.gson.annotations.Expose
+
 data class InfoJogoJson(
-    val titulo: String,
-    val capa: String,
+    @Expose val titulo: String,
+    @Expose val capa: String,
     val preco: Double,
     val descricao: String,
 ): Recomendavel {

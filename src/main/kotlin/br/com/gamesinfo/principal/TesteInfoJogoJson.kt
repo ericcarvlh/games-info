@@ -3,6 +3,8 @@ package br.com.gamesinfo.principal
 import br.com.gamesinfo.modelo.Periodo
 import br.com.gamesinfo.modelo.plano.PlanoAssinatura
 import br.com.gamesinfo.servicos.ConsumoAPI
+import com.google.gson.GsonBuilder
+import java.io.File
 import java.time.LocalDate
 import kotlin.math.round
 
@@ -58,4 +60,12 @@ fun main() {
 
     println(gamerCamila.jogosRecomendados)
     println(gamerBruno.jogosRecomendados)
+
+    val gson = GsonBuilder().excludeFieldsWithoutExposeAnnotation().create()
+    val serializacao = gson.toJson(gamerCamila.jogosRecomendados)
+    println(serializacao)
+
+    val arquivo = File("jogosRecomendados-${gamerCamila.nome}.json")
+    arquivo.writeText(serializacao)
+    println(arquivo.absolutePath)
 }
