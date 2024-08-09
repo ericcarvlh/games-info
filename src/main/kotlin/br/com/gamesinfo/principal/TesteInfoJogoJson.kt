@@ -37,7 +37,6 @@ fun main() {
     gamerCamila.recomendar(7)
     gamerCamila.recomendar(10)
     gamerCamila.recomendar(8)
-    gamerCamila.recomendar(0)
 
     gamerCamila.alugaJogo(jogoRd2, periodo)
     gamerCamila.alugaJogo(jogoSpider, periodo)
@@ -51,4 +50,12 @@ fun main() {
     }
     println("Valor total do aluguel: R$ ${round(vlrTotalAluguel)}")
     println(gamerCamila)
+
+    gamerCamila.recomendarJogo(jogoTheLastOfUs2, 8)
+    gamerCamila.recomendarJogo(jogoResidentVillage, 10)
+
+    gamerBruno.recomendarJogo(jogoTheLastOfUs2, 9)
+
+    println(gamerCamila.jogosRecomendados)
+    println(gamerBruno.jogosRecomendados)
 }
