@@ -31,7 +31,10 @@ fun main() {
 
             meuJogo = Jogo(
                 infoAPIShark.info.title,
-                infoAPIShark.info.thumb
+                infoAPIShark.info.thumb,
+                1.0,
+                "",
+                1
             )
         }
 
@@ -47,7 +50,7 @@ fun main() {
                 val descricaoPersonalizada = sc.nextLine()
                 meuJogo?.descricao = descricaoPersonalizada
             } else {
-                meuJogo?.descricao = meuJogo?.titulo
+                meuJogo?.descricao = meuJogo?.titulo.toString()
             }
 
             gamer.jogosBuscados.add(meuJogo)
