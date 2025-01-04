@@ -1,16 +1,16 @@
 package br.com.gamesinfo.dados
 
-import br.com.gamesinfo.modelo.Jogo
-import java.sql.Connection
-import java.sql.DriverManager
-import java.sql.SQLException
+import jakarta.persistence.EntityManagerFactory
+import jakarta.persistence.Persistence
 
 // diz que so temos um objeto na classe banco -> mais conhecido como singleton
 object Banco {
-    fun obterConexao(): Connection? {
+    fun getEntityManager(): EntityManagerFactory? {
         return try {
-            DriverManager.getConnection("jdbc:mysql://localhost:3306/db_alugames", "root", "")
-        } catch (e: SQLException) {
+            return Persistence.createEntityManagerFactory(
+                "db_alugames"
+            )
+        } catch (e: Exception) {
             e.printStackTrace()
             null
         }
