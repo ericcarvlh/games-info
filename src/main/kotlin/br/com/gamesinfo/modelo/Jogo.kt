@@ -1,25 +1,30 @@
 package br.com.gamesinfo.modelo
 
+import com.google.gson.annotations.Expose
 import jakarta.persistence.*
 
 // Val -> somente leitura, recebem valore apenas uma vez
 // Var -> !val
 
-// sinaliza que eh uma entidade do hibernate
-@Entity
-// sinaliza qual tabela esta sendo referenciada
-@Table (name = "tbl_jogos")
-class Jogo() {
-    /*
-        o atributo Id eh a PK
-        GeneratedValue value indica que eh gerado automaticamente
-    */
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+data class Jogo(
+    @Expose val titulo: String,
+    @Expose val capa: String,
+): Recomendavel {
     private var id:Int? = null
-    var titulo: String? = null
-    var capa: String? = null
-    var preco: Double? = null
+    var preco: Double = 0.0
     var descricao: String? = null
+
+    private var listaNotas = mutableListOf<Int>()
+
+    override val mediaNotas: Double
+        get() = listaNotas.average()
+
+    override fun recomendar(nota: Int) {
+        if (listaNotas.isEmpty())
+            listaNotas = mutableListOf()
+
+        listaNotas.add(nota)
+    }
 
     override fun toString(): String {
         return "\nid: $id\ntitulo: $titulo\ncapa: $capa\npreço: $preco\ndescricao: $descricao\n"
@@ -29,13 +34,21 @@ class Jogo() {
         titulo: String,
         capa: String,
         preco: Double,
-        descricao: String,
+        descricao: String?,
         id: Int
-    ) : this() {
-        this.titulo = titulo
+    ) : this(titulo, capa) {
         this.descricao = descricao
-        this.capa = capa
         this.preco = preco
         this.id = id
+    }
+
+    constructor(
+        titulo: String,
+        capa: String,
+        preco: Double,
+        descricao: String?
+    ) : this(titulo, capa) {
+        this.descricao = descricao
+        this.preco = preco
     }
 }
