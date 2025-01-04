@@ -53,5 +53,14 @@ class JogoDAO {
 //        }
 //    }
 
-    
+    fun getJogos() : MutableList<Jogo>? {
+        val manager = Banco.getEntityManager()
+
+        try {
+            val query = manager?.createQuery("FROM Jogo", Jogo::class.java)
+            return query?.resultList
+        } finally {
+            manager?.close()
+        }
+    }
 }
