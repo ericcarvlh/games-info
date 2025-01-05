@@ -1,18 +1,25 @@
 package br.com.gamesinfo.principal
 
 import br.com.gamesinfo.dados.Banco
+import br.com.gamesinfo.dados.dao.GamerDAO
 import br.com.gamesinfo.dados.dao.JogoDAO
+import br.com.gamesinfo.modelo.Gamer
 import br.com.gamesinfo.modelo.Jogo
 
 fun main() {
     val manager = Banco.getEntityManager()
-    val dao = JogoDAO(manager)
+    val jogoDAO = JogoDAO(manager)
 
-    val jogo = Jogo("Teste Hibernate", "Teste Hibernate", 2.87, "Teste Hibernate")
-    dao.adicionarJogo(jogo)
-
-    val listaJogos = dao.getJogos()
+    val listaJogos = jogoDAO.getJogos()
     println(listaJogos)
+
+    val gamerDAO = GamerDAO(manager)
+
+    val gamer = Gamer("Teste", "teste.teste@gmail.com", "11/11/2011", "testeTeste")
+    gamerDAO.adicionaGamer(gamer)
+
+    val gamers = gamerDAO.getGamers()
+    println(gamers)
 
     manager?.close()
 }

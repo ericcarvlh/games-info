@@ -1,11 +1,10 @@
 package br.com.gamesinfo.dados.dao
 
-import br.com.gamesinfo.dados.Banco
-import br.com.gamesinfo.dados.JogoEntity
+import br.com.gamesinfo.dados.entity.JogoEntity
 import br.com.gamesinfo.modelo.Jogo
 import jakarta.persistence.EntityManager
 
-class JogoDAO(val manager: EntityManager?) {
+class JogoDAO(private val manager: EntityManager?) {
     fun getJogos() : List<Jogo>? {
         val query = manager?.createQuery("FROM JogoEntity", JogoEntity::class.java)
 

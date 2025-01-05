@@ -13,10 +13,10 @@ data class Gamer(
     var usuario:String? = null
         set(value) {
             field = value
-            if (idInterno.isNullOrBlank())
+            if (idInterno.isEmpty())
                 criarIdInterno()
         }
-    var idInterno:String? = null
+    var idInterno:String = ""
         private set
     var plano: Plano = PlanoAvulso("BRONZE")
     var jogosBuscados:MutableList<Jogo?> = mutableListOf<Jogo?>()
@@ -51,6 +51,18 @@ data class Gamer(
         this.dataNascimento = dataNascimento
         this.usuario = usuario
         criarIdInterno()
+    }
+
+    constructor(
+        nome: String,
+        email: String,
+        dataNascimento: String?,
+        usuario: String?,
+        idInterno: String
+    ): this(nome, email) {
+        this.dataNascimento = dataNascimento
+        this.usuario = usuario
+        this.idInterno = idInterno
     }
 
     init {

@@ -1,4 +1,4 @@
-package br.com.gamesinfo.dados
+package br.com.gamesinfo.dados.entity
 
 import jakarta.persistence.*
 
